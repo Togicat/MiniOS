@@ -1,4 +1,6 @@
-﻿namespace MiniOS.Core;
+﻿using System.IO;
+
+namespace MiniOS.Core;
 
 public class InMemoryFS
 {
@@ -12,7 +14,10 @@ public class InMemoryFS
     //6. Control of Existence 
     //Dictionary ma    KEY     VALUE.. takze treba  toho filename to je ze je filename a ten ma value jako text
     public Dictionary<string, string> _files = new Dictionary<string, string>();
-    private static string path = "Memory/";
+    
+    private static string memoryDir = "Memory";
+    private static string memoryPath = Path.Combine(AppContext.BaseDirectory, memoryDir);
+    
     
     //.--------------------------------------. 
     //WRITE_FILE
@@ -62,13 +67,12 @@ public class InMemoryFS
         {
             _files.Add(filename, contents);
             _files[$"Memory/{filename}"] = contents;
-            Console.WriteLine($"Created file: {filename}");
-        }
-
-        
             
-
-        
+            string filePath = Path.Combine(memoryPath, filename);
+            File.WriteAllText(filePath, contents);
+            Console.WriteLine($"Created file: {filename}");
+            
+        }
         
     }
     
@@ -115,9 +119,17 @@ public class InMemoryFS
     //.--------------------------------------.
     public bool FSLOAD()
     {
+        Directory.CreateDirectory(memoryPath);
+        
+        
+        string testPath = Path.Combine(memoryPath, "Run.txt");
         _files.Add("Run.txt", "Run");
-        if (_files.ContainsKey("Run.txt"))
+        File.WriteAllText(testPath, string.Empty);
+        
+        
+        if (_files.ContainsKey("Run.txt") && File.Exists(testPath))
         {
+            File.Delete(testPath);
             _files.Remove("Run.txt");
             return true;
         }

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Net.Mime;
+using System.Threading;
 namespace MiniOS.Core;
 
 public class Kernel
@@ -22,16 +23,33 @@ public class Kernel
         Console.WriteLine("[OS] Booting up...");
         Thread.Sleep(100);
         //Console.Beep(1000, 500);
+
+        
         
         PMLOADER();
         //Console.Beep(500, 500);
         
         FSLOADER();
         //Console.Beep(1000, 500);
+
+        if (IsRunning == false)
+        {
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("[OS] BOOT FAILED!!");
+            Console.ResetColor();
+            Environment.Exit(0);
+        }
+        else
+        {
+            Console.Clear();
+            Menu();
+        }
+
+
         
-        //Console.Clear();
-        Menu();
-        
+
     }
 
     public void Shutdown()
@@ -55,7 +73,7 @@ public class Kernel
         
         Console.WriteLine("[OS] File System Loading...");
         Thread.Sleep(rnd.Next(200,2000));
-        if (!FileSystem.FSLOAD())
+        if (!FileSystem.FSLOAD() == true)
         {
             Console.WriteLine("[OS] File System Failed...");
             IsRunning = false;
@@ -64,6 +82,7 @@ public class Kernel
         {
             Console.WriteLine("[OS] File System Loaded.");
         }
+        Thread.Sleep(rnd.Next(200,1000));
     }
 
     void Menu()

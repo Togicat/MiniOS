@@ -10,7 +10,7 @@ public class InMemoryFS
     //4. Deleting Data -> self explemenatory
     //5. List of files -> writes smth like ls
     //6. Control of Existence 
-    
+    //Dictionary ma    KEY     VALUE.. takze treba  toho filename to je ze je filename a ten ma value jako text
     public Dictionary<string, string> _files = new Dictionary<string, string>();
     
     //.--------------------------------------. 

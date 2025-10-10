@@ -7,12 +7,15 @@ public class Shell
     //Search of commands -> self explenetory
     //Start of process -> start
     //Look on output 
-    
+    //Dict      KEY     VALUE   mame treba help coz bude key.. nebo cd key a value bude kam chceme jit
     Dictionary<string, string> commands = new Dictionary<string, string>();
-
+     
     public void Run()
     {
-        string command;
+        string command; //<- key 
+
+        
+        
         Console.WriteLine("Welcome to MiniOS! SHELL: ");
         Console.ReadKey();
         while (true)

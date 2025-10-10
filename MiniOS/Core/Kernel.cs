@@ -19,12 +19,9 @@ public class Kernel
         Random rnd = new Random();
         FileSystem = new InMemoryFS();
         
-        
         Console.WriteLine("[OS] Booting up...");
         Thread.Sleep(100);
         //Console.Beep(1000, 500);
-
-        
         
         PMLOADER();
         //Console.Beep(500, 500);
@@ -47,9 +44,7 @@ public class Kernel
             Menu();
         }
 
-
         
-
     }
 
     public void Shutdown()
@@ -130,4 +125,10 @@ public class Kernel
         //Console.Beep(800, 600);
 
     }
+
+    public bool ProcessRun()
+    {
+        return true;
+    }
+
 }

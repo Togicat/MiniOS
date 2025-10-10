@@ -14,14 +14,40 @@ public class Shell
     
     static Dictionary<string, Action> commands = new Dictionary<string, Action>();
 
+    //-----------------------------------------------------------------------------------------------------------------
+    //FILE MANAGEMENT -> cp, mv, rm, mkdir | cp - copy dir | mv - move | rm - remove | mkdir - make dir|
+    
+    //NAVIGATION -> cd, pwd, ls | cd - change dir | pwd - prints ur full adress where u are ig | ls - list |
+    
+    //TEXT PROCESSING -> cat, grep, sort, head | cat - shows contents | grep - search | sort - sorts ig | head - size |
+    //-----------------------------------------------------------------------------------------------------------------
     static Shell()
     {
         commands["create"] = () =>
         {
-            Console.WriteLine("Creating file");
-            
             fsys.CreateFile(filename, contents);
         };
+        commands["write"] = () =>
+        {
+            fsys.WriteFile(filename, contents);
+        };
+        commands["read"] = () =>
+        {
+            fsys.ReadFile(filename);
+        };
+        commands["delete"] = () =>
+        {
+            fsys.DeleteFile(filename);
+        };
+        commands["list"] = () => //writes dictionary list
+        {
+            fsys.ListFiles();
+        };
+        commands["exist"] = () =>
+        {
+            fsys.Exist(filename);
+        };
+        
     }
 
     
@@ -37,11 +63,15 @@ public class Shell
             Console.Write("> ");
             command = Console.ReadLine();
             string[] args = command.Split(' ');
+            
             //Command Structure
             _command = args[0];
-            filename = args[1];
-            contents = args[2];
             
+            if(args.Length > 1)
+                filename = args[1];
+            
+            if(args.Length > 2)
+                contents = args[2]; 
 
             if (commands.ContainsKey(_command)) // if commands contain input
             {
@@ -56,31 +86,7 @@ public class Shell
             }*/
 
 
-
-
-
-
         }
     }
-
-    //FILE MANAGEMENT -> cp, mv, rm, mkdir | cp - copy dir | mv - move | rm - remove | mkdir - make dir|
-    public void FileManagement()
-    {
-        
-    }
-
-
-    //NAVIGATION -> cd, pwd, ls | cd - change dir | pwd - prints ur full adress where u are ig | ls - list |
-    public void Navigation()
-    {
-        
-    }
-
-
-    //TEXT PROCESSING -> cat, grep, sort, head | cat - shows contents | grep - search | sort - sorts ig | head - size |
-    public void TextProcessing()
-    {
-        
-    }
-
+    
 }

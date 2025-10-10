@@ -80,15 +80,28 @@ public class InMemoryFS
     //DELETE_FILE                          
     //.--------------------------------------.
     public void DeleteFile(string filename) //odstrani ho DUH
-    {
-        if (_files.Remove(filename))
+    { //overit pokud existuje
+        string testPath = Path.Combine(memoryPath, filename);
+
+        if (File.Exists(testPath) && _files.ContainsKey(filename))
+        {
+            File.Delete(testPath);
+            _files.Remove(filename);
+            Console.WriteLine($"Deleted file: {filename}");
+        }
+        else
+        {
+            Console.WriteLine($"File {filename} does not exist");
+        }
+
+        /*if (_files.Remove(filename))
         {
             Console.WriteLine($"Deleted file: {filename}");
         }
         else
         {
             Console.WriteLine($"Failed to delete file: {filename}");
-        }
+        }*/
     }
     
     //.--------------------------------------.

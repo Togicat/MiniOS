@@ -10,14 +10,31 @@ public class Shell
     
     Dictionary<string, string> commands = new Dictionary<string, string>();
 
-    public void Run(string command)
+    public void Run()
     {
+        string command;
         Console.WriteLine("Welcome to MiniOS! SHELL: ");
         Console.ReadKey();
         while (true)
         {
+            Console.Write("> ");
             command = Console.ReadLine();
+            string[] args = command.Split(' ');
             
+            //Chci udelat ze kdyz to detekuje nejaky ten command tak to neco udela
+            switch (args[0])
+            {
+                case  "help":
+                    Console.WriteLine("KYS");
+                    break;
+                case "carter":
+                    break;
+                
+            }
+            
+
+           
+
             
         }
     }

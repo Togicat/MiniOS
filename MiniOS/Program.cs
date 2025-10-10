@@ -12,6 +12,8 @@ public class Program
         
         //BOOT
         kernel.Boot();
+        //SHELL
+        shell.Run();
         
         
     }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniOS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+306f96090659c1ea0807c87e715880178468e97d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72df4c58961eac3308cf96409302be4f1e80c326")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniOS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniOS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

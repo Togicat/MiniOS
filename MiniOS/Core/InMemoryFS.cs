@@ -12,6 +12,7 @@ public class InMemoryFS
     //6. Control of Existence 
     //Dictionary ma    KEY     VALUE.. takze treba  toho filename to je ze je filename a ten ma value jako text
     public Dictionary<string, string> _files = new Dictionary<string, string>();
+    private static string path = "Memory/";
     
     //.--------------------------------------. 
     //WRITE_FILE
@@ -57,10 +58,15 @@ public class InMemoryFS
         {
             Console.WriteLine("Already exists");
         }
-        else 
-            _files[filename] = contents;
-            Console.WriteLine($"Created file: {filename}");
+        else
+        {
             _files.Add(filename, contents);
+            _files[$"Memory/{filename}"] = contents;
+            Console.WriteLine($"Created file: {filename}");
+        }
+
+        
+            
 
         
         

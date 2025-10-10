@@ -60,6 +60,7 @@ public class InMemoryFS
         else 
             _files[filename] = contents;
             Console.WriteLine($"Created file: {filename}");
+            _files.Add(filename, contents);
 
         
         
@@ -102,6 +103,23 @@ public class InMemoryFS
 
 
     }
+    
+    //.--------------------------------------.
+    //BOOT_FSLOADER
+    //.--------------------------------------.
+    public bool FSLOAD()
+    {
+        _files.Add("Run.txt", "Run");
+        if (_files.ContainsKey("Run.txt"))
+        {
+            _files.Remove("Run.txt");
+            return true;
+        }
+        else
+            return false;
+        
+        
 
+    }
 
 }

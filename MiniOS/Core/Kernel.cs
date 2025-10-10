@@ -15,26 +15,22 @@ public class Kernel
     
     public void Boot()
     {
-        try
-        {
-            
-            Console.WriteLine("[OS] Booting up...");
-            Thread.Sleep(100);
-            Console.Beep(1000, 500);
-            Console.WriteLine("[OS] Loading Important Stuff...");
-            Console.Beep(500, 500);
-            Thread.Sleep(1000);
-            Console.WriteLine("[OS] File System Loading...");
-            Console.Beep(1000, 500);
-            Thread.Sleep(2000);
-            //Console.Clear();
-            Menu();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"ERROR WHILE BOOTING: {e.Message}");
-            throw;
-        }
+        Random rnd = new Random();
+        FileSystem = new InMemoryFS();
+        
+        
+        Console.WriteLine("[OS] Booting up...");
+        Thread.Sleep(100);
+        Console.Beep(1000, 500);
+        
+        PMLOADER();
+        Console.Beep(500, 500);
+        
+        FSLOADER();
+        Console.Beep(1000, 500);
+        
+        //Console.Clear();
+        Menu();
         
     }
 
@@ -42,6 +38,32 @@ public class Kernel
     {
         Console.WriteLine("[sys] Shutting down..");
         IsRunning = false;
+    }
+
+    public void PMLOADER()
+    {
+        Random rnd = new Random();
+        Thread.Sleep(rnd.Next(300, 1000));
+        Console.WriteLine("[OS] Loading Important Stuff...");
+        
+        
+    }
+
+    public void FSLOADER()
+    {
+        Random rnd = new Random();
+        
+        Console.WriteLine("[OS] File System Loading...");
+        Thread.Sleep(rnd.Next(200,2000));
+        if (!FileSystem.FSLOAD())
+        {
+            Console.WriteLine("[OS] File System Failed...");
+            IsRunning = false;
+        }
+        else
+        {
+            Console.WriteLine("[OS] File System Loaded.");
+        }
     }
 
     void Menu()

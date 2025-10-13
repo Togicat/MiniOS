@@ -10,14 +10,15 @@ public class Program
         Kernel kernel = new Kernel();
         Shell shell = new Shell();
         InMemoryFS fs = new InMemoryFS();
+        fs.LoadFromDisk();
         
         //BOOT
         kernel.Boot();
         //SHELL
         shell.Run();
 
-        string memDir = "Memory/";
-        fs.DeleteFile(memDir);
+        
+        
         
     }
 }

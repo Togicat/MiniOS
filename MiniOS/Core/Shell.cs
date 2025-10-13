@@ -47,7 +47,12 @@ public class Shell
         {
             fsys.Exist(filename);
         };
-        
+        commands["exit"] = () =>
+        {
+            fsys.SaveToDisk();
+            Environment.Exit(0);
+        };
+
     }
 
     
@@ -62,16 +67,13 @@ public class Shell
         {
             Console.Write("> ");
             command = Console.ReadLine();
-            string[] args = command.Split(' ');
+            string[] args = command.Split(' ', 3,  StringSplitOptions.RemoveEmptyEntries);
             
             //Command Structure
             _command = args[0];
+            filename = args.Length > 1 ? args[1] : null;
+            contents = args.Length > 2 ? args[2]  : null;
             
-            if(args.Length > 1)
-                filename = args[1];
-            
-            if(args.Length > 2)
-                contents = args[2]; 
 
             if (commands.ContainsKey(_command)) // if commands contain input
             {

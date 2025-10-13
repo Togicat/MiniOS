@@ -1,4 +1,7 @@
 ﻿using System.IO;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+
 
 namespace MiniOS.Core;
 
@@ -45,9 +48,11 @@ public class InMemoryFS
         if (!Exist(filename))
         {
             Console.WriteLine($"File {filename} does not exist");
+            
             return null;
         }
-        return _files[filename];
+        return $"Name: {File.ReadAllLines(filename)}";
+        
 
         /*return _files.TryGetValue(filename, out var contents)
             ? contents
@@ -71,6 +76,7 @@ public class InMemoryFS
             string filePath = Path.Combine(memoryPath, filename);
             File.WriteAllText(filePath, contents);
             Console.WriteLine($"Created file: {filename}");
+            
             
         }
         
@@ -142,15 +148,38 @@ public class InMemoryFS
         
         if (_files.ContainsKey("Run.txt") && File.Exists(testPath))
         {
+            LoadFromDisk();
             File.Delete(testPath);
             _files.Remove("Run.txt");
             return true;
         }
         else
             return false;
-        
-        
 
+    }
+    
+    //.--------------------------------------.
+    //SAVE _files TO DISK
+    //.--------------------------------------.
+
+    public void SaveToDisk()
+    {
+        string json = JsonSerializer.Serialize(_files, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("filesystem.json", json);
+    }
+
+    public void LoadFromDisk()
+    {
+        if (File.Exists("filesystem.json"))
+        {
+            string json = File.ReadAllText("filesystem.json");
+            _files = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+        }
+        else
+        {
+            _files = new Dictionary<string, string>();
+        }
+        
     }
 
 }

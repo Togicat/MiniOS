@@ -31,3 +31,6 @@ C:\Users\PC\RiderProjects\MiniOS\MiniOS\obj\Debug\net9.0\MiniOS.sourcelink.json
 C:\Users\Uživatel\source\repos\MiniOS\MiniOS\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\Uživatel\source\repos\MiniOS\MiniOS\obj\Debug\net9.0\MiniOS.csproj.AssemblyReference.cache
 C:\Users\Uživatel\source\repos\MiniOS\MiniOS\obj\Debug\net9.0\MiniOS.csproj.Up2Date
+C:\Users\PC\RiderProjects\MiniOS\MiniOS\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\PC\RiderProjects\MiniOS\MiniOS\obj\Debug\net9.0\MiniOS.csproj.AssemblyReference.cache
+C:\Users\PC\RiderProjects\MiniOS\MiniOS\obj\Debug\net9.0\MiniOS.csproj.Up2Date

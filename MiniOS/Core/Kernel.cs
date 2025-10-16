@@ -93,27 +93,25 @@ public class Kernel
         // +============================================+
         
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine(@"+============================================+");
+        //Console.WriteLine(@"+============================================+");
         Thread.Sleep(500);
         //Console.Beep(200, 100);
-        Console.WriteLine(@"|                         _____   ____       |");
+        Console.WriteLine(@"|.##...##..######..##..##..######...####....####..|");
         Thread.Sleep(500);
-        Console.WriteLine(@"| /'\_/`\  __          __/\  __`\/\  _`\     |");
-        Thread.Sleep(500);
-        //Console.Beep(200, 100);
-        Console.WriteLine(@"|/\      \/\_\    ___ /\_\ \ \/\ \ \,\L\_\   |");
-        Thread.Sleep(500);
-        Console.WriteLine(@"|\ \ \__\ \/\ \ /' _ `\/\ \ \ \ \ \/_\__ \   |");
+        Console.WriteLine(@"|.###.###....##....###.##....##....##..##..##.....|");
         Thread.Sleep(500);
         //Console.Beep(200, 100);
-        Console.WriteLine(@"| \ \ \_/\ \ \ \/\ \/\ \ \ \ \ \_\ \/\ \L\ \ |");
+        Console.WriteLine(@"|.##.#.##....##....##.###....##....##..##...####..|");
         Thread.Sleep(500);
-        Console.WriteLine(@"|  \ \_\\ \_\ \_\ \_\ \_\ \_\ \_____\ `\____\|");
+        Console.WriteLine(@"|.##...##....##....##..##....##....##..##......##.|");
         Thread.Sleep(500);
         //Console.Beep(200, 100);
-        Console.WriteLine(@"|   \/_/ \/_/\/_/\/_/\/_/\/_/\/_____/\/_____/|");
+        Console.WriteLine(@"|.##...##..######..##..##..######...####....####..|");
         Thread.Sleep(500);
-        Console.WriteLine(@"+============================================+");
+        Console.WriteLine(@"|.................................................|");
+        Thread.Sleep(500);
+        //Console.Beep(200, 100);
+        //Console.WriteLine(@"+============================================+");
         //Console.Beep(200, 100);
         Console.ResetColor();
         

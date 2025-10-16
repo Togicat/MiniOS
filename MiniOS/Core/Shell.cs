@@ -12,48 +12,54 @@ public class Shell
     private static string filename {get; set; }
     private static string contents { get; set; }
     
-    static Dictionary<string, Action> commands = new Dictionary<string, Action>();
-
-    //-----------------------------------------------------------------------------------------------------------------
-    //FILE MANAGEMENT -> cp, mv, rm, mkdir | cp - copy dir | mv - move | rm - remove | mkdir - make dir|
+    static Dictionary<string, Action> commands = new();
+    static Dictionary<string, Action> processes = new();
     
-    //NAVIGATION -> cd, pwd, ls | cd - change dir | pwd - prints ur full adress where u are ig | ls - list |
     
-    //TEXT PROCESSING -> cat, grep, sort, head | cat - shows contents | grep - search | sort - sorts ig | head - size |
-    //-----------------------------------------------------------------------------------------------------------------
     static Shell()
     {
-        commands["create"] = () =>
+        commands["create"] = () => //creates file
         {
             fsys.CreateFile(filename, contents);
         };
-        commands["write"] = () =>
+        commands["write"] = () => //writes in to the file/ adds lines to text
         {
             fsys.WriteFile(filename, contents);
         };
-        commands["read"] = () =>
+        commands["read"] = () => //reads file
         {
             fsys.ReadFile(filename);
+            
         };
-        commands["delete"] = () =>
+        commands["delete"] = () => //deletes file
         {
             fsys.DeleteFile(filename);
         };
-        commands["list"] = () => //writes dictionary list
+        commands["list"] = () => //writes dictionary list 
         {
             fsys.ListFiles();
         };
-        commands["exist"] = () =>
+        commands["exist"] = () => //check if exists
         {
             fsys.Exist(filename);
         };
-        commands["exit"] = () =>
+        commands["exit"] = () => //exit
         {
             fsys.SaveToDisk();
             Environment.Exit(0);
         };
+        
 
     }
+    
+    static ProcessManager()
+        {
+            processes["ss"] = () =>
+            {
+                Console.WriteLine("ss");
+            };
+            
+        }
 
     
     
@@ -89,6 +95,8 @@ public class Shell
 
 
         }
+        
+
     }
     
 }

@@ -60,14 +60,27 @@ public class InMemoryFS
     //.--------------------------------------.
     public string ReadFile(string filename) //nacte soubor a vycte ho
     {
+        string filePath = Path.Combine(memoryPath, filename);
+        
+        
+        
         if (!Exist(filename))
         {
             Console.WriteLine($"File {filename} does not exist");
-
+            
+            return null;
+        }
+        else
+        {   
+            var read = File.ReadAllText(filePath);
+            Console.WriteLine(read);
+            
             return null;
         }
 
-        return _files[filename];
+        
+
+        
 
 
         /*return _files.TryGetValue(filename, out var contents)
